@@ -1,0 +1,35 @@
+pool:
+  vmImage: 'ubuntu-24.04'
+
+variables:
+- group: 'github-config'
+
+stages:
+
+- stage: Test  
+  jobs:
+  - job: 
+    steps:
+    - script: |
+        composer self-update
+        composer dump-autoload
+        composer install --no-interaction --prefer-dist
+      displayName: 'Setup Composer and install dependencies'
+    - script: './vendor/bin/phpunit tests'
+      displayName: 'Run Tests with PHPUnit'
+
+- stage: GitHub
+  jobs:
+  - job: 
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    steps:
+    - checkout: self
+      persistCredentials: true
+    - script: |
+        git remote add github https://$(PAT)@github.com/openpotato/openplzapi-client.php.git
+        git fetch github
+        git checkout .
+        git push github HEAD:main
+        git push --tags github HEAD:main
+      displayName: 'Push to GitHub'
+      
