@@ -12,10 +12,10 @@ The official [PHP](https://www.php.net/) client library for direct access to the
 
 ## Installation
 
-The **OpenPLZ PHP Python Client** is available on [PiPy](https://pypi.python.org/pypi/openplzapi-client), and installation via [pip](https://pip.pypa.io/) is the recommended way to install:
+The **OpenPLZ PHP Python Client** is available on [Packagist](https://packagist.org/packages/openpotato/openplzapi-client), and installation via [Composer](https://getcomposer.org/) is the recommended way to install:
 
-```
-pip install openplzapi-client
+``` bash
+composer require openpotato/openplzapi-client
 ```
 
 ## Getting started

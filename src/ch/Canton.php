@@ -12,11 +12,18 @@ namespace OpenPlzApi\CH;
 class Canton
 {
     /**
-     * Key (Kantonsnummer)
+     * Key (Bfs-Nummer des Kantons)
      * 
      * @var string
      */
     public string $key;
+
+    /**
+     * Historical code (Historisierte Nummer des Kantons)
+     * 
+     * @var string
+     */
+    public string $historicalCode;
 
     /**
      * Name (Kantonsname)
@@ -26,27 +33,30 @@ class Canton
     public string $name;
 
     /**
-     * Code (Kantonskürzel)
+     * Short name (Kantonskürzel)
      * 
      * @var string
      */
-    public string $code;
+    public string $shortName;
 
     /**
      * Initializes a new instance of the Canton class.
      *
-     * @param string $key  Key (Kantonsnummer)
+     * @param string $key  Key (Bfs-Nummer des Kantons)
+     * @param string $historicalCode  Historical code (Historisierte Nummer des Kantons)
      * @param string $name  Name (Kantonsname)
-     * @param string $code  Code (Kantonskürzel)
+     * @param string $shortName  Short name (Kantonskürzel)
      */
     public function __construct(
         string $key, 
+        string $historicalCode,
         string $name, 
-        string $code)
+        string $shortName)
     {
         $this->key = $key;
+        $this->historicalCode = $historicalCode;
         $this->name = $name;
-        $this->code = $code;
+        $this->shortName = $shortName;
     }
 
     /**
@@ -59,8 +69,9 @@ class Canton
     {
         return new self(
             $data['key'] ?? null,
+            $data['historicalCode'] ?? null,
             $data['name'] ?? null,
-            $data['code'] ?? null
+            $data['shortName'] ?? null
         );
     }
 }

@@ -12,7 +12,7 @@ namespace OpenPlzApi\CH;
 class CommuneSummary
 {
     /**
-     * Key (Gemeindenummer)
+     * Key (Bfs-Nummer der Gemeinde)
      * 
      * @var string
      */
@@ -35,7 +35,7 @@ class CommuneSummary
     /**
      * Initializes a new instance of the CommuneSummary class.
      *
-     * @param string $key  Key (Gemeindenummer)
+     * @param string $key  Key (Bfs-Nummer der Gemeinde)
      * @param string $name  Name (Amtlicher Gemeindename)
      * @param string $shortName  Short name (Gemeindename, kurz)
      */

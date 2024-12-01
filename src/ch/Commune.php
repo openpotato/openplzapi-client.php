@@ -15,11 +15,18 @@ use OpenPlzApi\CH\CantonSummary;
 class Commune
 {
     /**
-     * Key (Gemeindenummer)
+     * Key (Bfs-Nummer der Gemeinde)
      * 
      * @var string
      */
     public string $key;
+
+    /**
+     * Historical code (Historisierte Nummer der Gemeinde)
+     * 
+     * @var string
+     */
+    public string $historicalCode;
 
     /**
      * Name (Amtlicher Gemeindename)
@@ -52,7 +59,8 @@ class Commune
     /**
      * Initializes a new instance of the Commune class.
      *
-     * @param string $key  Key (Gemeindenummer)
+     * @param string $key  Key (Bfs-Nummer der Gemeinde)
+     * @param string $historicalCode  Historical code (Historisierte Nummer der Gemeinde)
      * @param string $name  Name (Amtlicher Gemeindename)
      * @param string $shortName  Short name (Gemeindename, kurz)
      * @param DistrictSummary $district  District (Bezirk)
@@ -60,12 +68,14 @@ class Commune
      */
     public function __construct(
         string $key, 
+        string $historicalCode,
         string $name, 
         string $shortName, 
         DistrictSummary $district,
         CantonSummary $canton)
     {
         $this->key = $key;
+        $this->historicalCode = $historicalCode;
         $this->name = $name;
         $this->shortName = $shortName;
         $this->district = $district; 
@@ -82,6 +92,7 @@ class Commune
     {
         return new self(
             $data['key'] ?? null,
+            $data['historicalCode'] ?? null,
             $data['name'] ?? null,
             $data['shortName'] ?? null,
             DistrictSummary::fromJson($data['district'] ?? []),

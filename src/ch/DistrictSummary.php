@@ -12,7 +12,7 @@ namespace OpenPlzApi\CH;
 class DistrictSummary
 {
     /**
-     * Key (Bezirksnummer)
+     * Key (Bfs-Nummer der Gemeinde)
      * 
      * @var string
      */
@@ -24,19 +24,29 @@ class DistrictSummary
      * @var string
      */
     public string $name;
+
+    /**
+     * Short name (Bezirksname, kurz)
+     * 
+     * @var string
+     */
+    public string $shortName;
  
     /**
      * Initializes a new instance of the DistrictSummary class.
      *
-     * @param string $key  Key (Bezirksnummer)
+     * @param string $key  Key (Bfs-Nummer der Gemeinde)
      * @param string $name  Name (Bezirksname)
+     * @param string $shortName  Short name (Bezirksname, kurz)
      */
     public function __construct(
         string $key, 
-        string $name)
+        string $name,
+        string $shortName)
     {
         $this->key = $key;
         $this->name = $name;
+        $this->shortName = $shortName;
     }
  
     /**
@@ -52,7 +62,8 @@ class DistrictSummary
         }
         return new self(
             $data['key'] ?? null,
-            $data['name'] ?? null
+            $data['name'] ?? null,
+            $data['shortName'] ?? null
         );
     }
  }
