@@ -14,11 +14,18 @@ use OpenPlzApi\CH\CantonSummary;
 class District
 {
     /**
-     * Key (Bezirksnummer)
+     * Key (Bfs-Nummer des Bezirks)
      * 
      * @var string
      */
     public string $key;
+
+    /**
+     * Historical code (Historisierte Nummer des Bezirks)
+     * 
+     * @var string
+     */
+    public string $historicalCode;
 
     /**
      * Name (Bezirksname)
@@ -26,6 +33,13 @@ class District
      * @var string
      */
     public string $name;
+
+    /**
+     * Short name (Bezirksname, kurz)
+     * 
+     * @var string
+     */
+    public string $shortName;
 
     /**
      * Canton (Kanton)
@@ -37,17 +51,23 @@ class District
     /**
      * Initializes a new instance of the District class.
      *
-     * @param string $key  Key (Bezirksnummer)
+     * @param string $key  Key (Bfs-Nummer des Bezirks)
+     * @param string $historicalCode  Key (Bezirksnummer)
      * @param string $name  Name (Bezirksname)
+     * @param string $shortName  Short name (Bezirksname, kurz)
      * @param CantonSummary $canton  Canton (Kanton)
      */
     public function __construct(
         string $key, 
+        string $historicalCode, 
         string $name, 
+        string $shortName, 
         CantonSummary $canton)
     {
         $this->key = $key;
+        $this->historicalCode = $historicalCode;
         $this->name = $name;
+        $this->shortName = $shortName;
         $this->canton = $canton;
     }
  
@@ -61,7 +81,9 @@ class District
     {
         return new self(
             $data['key'] ?? null,
+            $data['historicalCode'] ?? null,
             $data['name'] ?? null,
+            $data['shortName'] ?? null,
             CantonSummary::fromJson($data['canton'] ?? [])
         );
     }

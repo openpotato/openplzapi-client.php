@@ -42,8 +42,9 @@ class TestApiForSwitzerland extends TestCase
         foreach ($districts as $district) {
             if ($district->key === "1001") {
                 $this->assertEquals("District de la Broye", $district->name);
+                $this->assertEquals("10107", $district->historicalCode);
                 $this->assertEquals("10", $district->canton->key);
-                $this->assertEquals("FR", $district->canton->code);
+                $this->assertEquals("FR", $district->canton->shortName);
                 $this->assertEquals("Fribourg / Freiburg", $district->canton->name);
                 $existsKey = true;
                 break;
@@ -68,11 +69,12 @@ class TestApiForSwitzerland extends TestCase
         foreach ($communes as $commune) {
             if ($commune->key === "2008") {
                 $this->assertEquals("Châtillon (FR)", $commune->name);
+                $this->assertEquals("11419", $commune->historicalCode);
                 $this->assertEquals("Châtillon (FR)", $commune->shortName);
                 $this->assertEquals("1001", $commune->district->key);
                 $this->assertEquals("District de la Broye", $commune->district->name);
                 $this->assertEquals("10", $commune->canton->key);
-                $this->assertEquals("FR", $commune->canton->code);
+                $this->assertEquals("FR", $commune->canton->shortName);
                 $this->assertEquals("Fribourg / Freiburg", $commune->canton->name);
                 $existsKey = true;
                 break;
@@ -101,7 +103,7 @@ class TestApiForSwitzerland extends TestCase
                 $this->assertEquals("1002", $commune->district->key);
                 $this->assertEquals("District de la Glâne", $commune->district->name);
                 $this->assertEquals("10", $commune->canton->key);
-                $this->assertEquals("FR", $commune->canton->code);
+                $this->assertEquals("FR", $commune->canton->shortName);
                 $this->assertEquals("Fribourg / Freiburg", $commune->canton->name);
                 $existsKey = true;
                 break;
@@ -127,7 +129,7 @@ class TestApiForSwitzerland extends TestCase
             if ($locality->postalCode === "8001") {
                 $this->assertEquals("Zürich", $locality->name);
                 $this->assertEquals("8001", $locality->postalCode);
-                $this->assertEquals("ZH", $locality->canton->code);
+                $this->assertEquals("ZH", $locality->canton->shortName);
                 $this->assertEquals("Zürich", $locality->canton->name);
                 $existsKey = true;
                 break;
@@ -161,7 +163,7 @@ class TestApiForSwitzerland extends TestCase
                 $this->assertEquals("112", $street->district->key);
                 $this->assertEquals("Bezirk Zürich", $street->district->name);
                 $this->assertEquals("1", $street->canton->key);
-                $this->assertEquals("ZH", $street->canton->code);
+                $this->assertEquals("ZH", $street->canton->shortName);
                 $this->assertEquals("Zürich", $street->canton->name);
                 $existsKey = true;
                 break;
@@ -195,7 +197,7 @@ class TestApiForSwitzerland extends TestCase
                 $this->assertEquals("112", $street->district->key);
                 $this->assertEquals("Bezirk Zürich", $street->district->name);
                 $this->assertEquals("1", $street->canton->key);
-                $this->assertEquals("ZH", $street->canton->code);
+                $this->assertEquals("ZH", $street->canton->shortName);
                 $this->assertEquals("Zürich", $street->canton->name);
                 $existsKey = true;
                 break;
