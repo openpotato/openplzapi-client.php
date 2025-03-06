@@ -97,9 +97,10 @@ class TestApiForSwitzerland extends TestCase
         $existsKey = false; 
 
         foreach ($communes as $commune) {
-            if ($commune->key === "2061") {
-                $this->assertEquals("Auboranges", $commune->name);
-                $this->assertEquals("Auboranges", $commune->shortName);
+            if ($commune->key === "2063") {
+                $this->assertEquals("Billens-Hennens", $commune->name);
+                $this->assertEquals("14103", $commune->historicalCode);
+                $this->assertEquals("Billens-Hennens", $commune->shortName);
                 $this->assertEquals("1002", $commune->district->key);
                 $this->assertEquals("District de la Glâne", $commune->district->name);
                 $this->assertEquals("10", $commune->canton->key);
