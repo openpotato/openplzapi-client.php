@@ -9,7 +9,7 @@ namespace OpenPlzApi;
 use OpenPlzApi\AT\ApiClientForAustria;
 use PHPUnit\Framework\TestCase;
 
-class TestApiForAustria extends TestCase
+class ApiForAustriaTest extends TestCase
 {
     private $client;
 
