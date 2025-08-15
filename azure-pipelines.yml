@@ -58,7 +58,7 @@ stages:
         fi
 
         # Push only the main branch (fast-forward or create remote if missing)
-        git push github HEAD:refs/heads/main
+        git push --tags github HEAD:refs/heads/main
                         
         # Remove the remote so the PAT isn't left in .git/config
         git remote remove github || true
