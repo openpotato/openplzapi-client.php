@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use OpenPlzApi\DE\ApiClientForGermany;
 use OpenPlzApi\ProblemDetailsException;
 
-class TestApiAspects extends TestCase
+class ApiAspectsTest extends TestCase
 {
     private $client;
 

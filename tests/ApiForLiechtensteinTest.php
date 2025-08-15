@@ -9,7 +9,7 @@ namespace OpenPlzApi;
 use OpenPlzApi\LI\ApiClientForLiechtenstein;
 use PHPUnit\Framework\TestCase;
 
-class TestApiForLiechtenstein extends TestCase
+class ApiForLiechtensteinTest extends TestCase
 {
     private $client;
 
@@ -45,8 +45,8 @@ class TestApiForLiechtenstein extends TestCase
             if ($locality->postalCode === "9490" && $locality->name === "Vaduz") {
                 $existsName = true;
                 $existsPostalCode = true;
-                $this->assertEquals("7001", $locality->commune->key);
-                $this->assertEquals("Vaduz", $locality->commune->name);
+                $this->assertEquals("7005", $locality->commune->key);
+                $this->assertEquals("Schaan", $locality->commune->name);
                 break;
             }
         }

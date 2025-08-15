@@ -37,7 +37,7 @@ class ProblemDetailsException extends \Exception
      * 
      * @var string
      */
-    private ?string $detail;
+    public ?string $detail;
 
     /**
      * An URI pointing to the specific instance of the error.
