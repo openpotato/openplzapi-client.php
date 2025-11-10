@@ -19,21 +19,21 @@ class Street
      * 
      * @var string
      */
-    public ?string $name;
+    public string $name;
 
     /**
      * Postal code (Postleitzahl)
      * 
      * @var CantonSummary
      */
-    public ?string $postalCode;
+    public string $postalCode;
 
     /**
      * Locality (Ortsname)
      * 
      * @var string
      */
-    public ?string $locality;
+    public string $locality;
 
     /**
      * Borough (Stadtbezirk)
@@ -54,7 +54,7 @@ class Street
      * 
      * @var MunicipalitySummary
      */
-    public ?MunicipalitySummary $municipality;
+    public MunicipalitySummary $municipality;
 
     /**
      * District (Kreis)
@@ -68,7 +68,7 @@ class Street
      * 
      * @var FederalStateSummary
      */
-    public ?FederalStateSummary $federalState;
+    public FederalStateSummary $federalState;
  
      /**
       * Initializes a new instance of the Street class.
@@ -76,21 +76,21 @@ class Street
       * @param string $name  Name (Straßenname)
       * @param string $postalCode  Postal code (Postleitzahl)
       * @param string $locality  Locality (Ortsname)
-      * @param string $borough  Borough (Stadtbezirk)
-      * @param string $suburb  Suburb (Stadtteil)
+      * @param ?string $borough  Borough (Stadtbezirk)
+      * @param ?string $suburb  Suburb (Stadtteil)
       * @param MunicipalitySummary $municipality  Municipality (Gemeinde)
-      * @param DistrictSummary $district  District (Kreis)
+      * @param ?DistrictSummary $district  District (Kreis)
       * @param FederalStateSummary $federalState  Federal state (Bundesland)
       */
      public function __construct(
-        ?string $name,
-        ?string $postalCode,
-        ?string $locality,
+        string $name,
+        string $postalCode,
+        string $locality,
         ?string $borough,
         ?string $suburb,
-        ?MunicipalitySummary $municipality, 
+        MunicipalitySummary $municipality, 
         ?DistrictSummary $district, 
-        ?FederalStateSummary $federalState)
+        FederalStateSummary $federalState)
      {
          $this->name = $name;
          $this->postalCode = $postalCode;
@@ -116,9 +116,9 @@ class Street
              $data['locality'] ?? null,
              $data['borough'] ?? null,
              $data['suburb'] ?? null,
-             MunicipalitySummary::fromJson($data['municipality'] ?? null),
+             MunicipalitySummary::fromJson($data['municipality']),
              DistrictSummary::fromJson($data['district'] ?? null),
-             FederalStateSummary::fromJson($data['federalState'] ?? null)
+             FederalStateSummary::fromJson($data['federalState'])
          );
      }
  }
