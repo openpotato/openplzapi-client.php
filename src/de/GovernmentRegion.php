@@ -71,7 +71,7 @@ class GovernmentRegion
             $data['key'] ?? null,
             $data['name'] ?? null,
             $data['administrativeHeadquarters'] ?? null,
-            FederalStateSummary::fromJson($data['federalState'] ?? [])
+            FederalStateSummary::fromJson($data['federalState'])
         );
     }
 }

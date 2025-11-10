@@ -136,7 +136,7 @@ class Municipality
             $data['multiplePostalCodes'],
             $data['type'] ?? '',
             MunicipalAssociationSummary::fromJson($data['association'] ?? null),
-            DistrictSummary::fromJson($data['district']),
+            DistrictSummary::fromJson($data['district'] ?? null),
             GovernmentRegionSummary::fromJson($data['governmentRegion'] ?? null),
             FederalStateSummary::fromJson($data['federalState'])
         );

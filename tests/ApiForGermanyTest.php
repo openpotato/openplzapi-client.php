@@ -263,6 +263,34 @@ class ApiForGermanyTest extends TestCase
         $this->assertTrue($existsKey, "Locality with name 'Neuwied' and postal code '56566' was not found.");
     }
 
+    public function testLocalitiesWithoutDistrict(): void
+    {
+        $localities = $this->client->getLocalities("20457", null, 1, 10);
+
+        $this->assertGreaterThan(0, count($localities));
+        $this->assertEquals(1, $localities->pageIndex());
+        $this->assertEquals(10, $localities->pageSize());
+        $this->assertGreaterThanOrEqual(1, $localities->totalPages());
+        $this->assertGreaterThanOrEqual(1, $localities->totalCount());
+
+        $existsKey = false;
+
+        foreach ($localities as $locality) {
+            if ($locality->name === "Hamburg" && $locality->postalCode === "20457") {
+                $this->assertEquals("02000000", $locality->municipality->key);
+                $this->assertEquals("Hamburg, Freie und Hansestadt", $locality->municipality->name);
+                $this->assertEquals("Kreisfreie Stadt", $locality->municipality->type);
+                $this->assertEquals("02", $locality->federalState->key);
+                $this->assertEquals("Hamburg", $locality->federalState->name);
+                $this->assertNull($locality->district);
+                $existsKey = true;
+                break;
+            }
+        }
+
+        $this->assertTrue($existsKey, "Locality with name 'Hamburg' and postal code '20457' was not found.");
+    }
+
     public function testFullTextSearch()
     {
         $streetsPage = $this->client->performFullTextSearch("Berlin Pariser Platz", 1, 10);

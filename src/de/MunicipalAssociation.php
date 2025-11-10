@@ -99,8 +99,8 @@ class MunicipalAssociation
             $data['name'] ?? null,
             $data['type'] ?? null,
             $data['administrativeHeadquarters'] ?? null,
-            DistrictSummary::fromJson($data['district'] ?? []),
-            FederalStateSummary::fromJson($data['federalState'] ?? [])
+            DistrictSummary::fromJson($data['district']),
+            FederalStateSummary::fromJson($data['federalState'])
         );
     }
 }

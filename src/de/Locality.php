@@ -35,9 +35,9 @@ class Locality
     /**
      * District (Kreis)
      * 
-     * @var DistrictSummary
+     * @var ?DistrictSummary
      */
-    public DistrictSummary $district;
+    public ?DistrictSummary $district;
 
     /**
      * Federal state (Bundesland)
@@ -52,14 +52,14 @@ class Locality
      * @param string $name  Name (Ortsname)
      * @param string $postalCode  Postal code (Postleitzahl)
      * @param MunicipalitySummary $municipality  Municipality (Gemeinde)
-     * @param DistrictSummary $district  District (Kreis)
+     * @param ?DistrictSummary $district  District (Kreis)
      * @param FederalStateSummary $federalState  Federal state (Bundesland)
      */
     public function __construct(
         string $name, 
         string $postalCode,
         MunicipalitySummary $municipality,
-        DistrictSummary $district,
+        ?DistrictSummary $district,
         FederalStateSummary $federalState)
     {
         $this->name = $name;
@@ -80,9 +80,9 @@ class Locality
         return new self(
             $data['name'] ?? null,
             $data['postalCode'] ?? null,
-            MunicipalitySummary::fromJson($data['municipality'] ?? []),
-            DistrictSummary::fromJson($data['district'] ?? []),
-            FederalStateSummary::fromJson($data['federalState'] ?? [])
+            MunicipalitySummary::fromJson($data['municipality']),
+            DistrictSummary::fromJson($data['district'] ?? null),
+            FederalStateSummary::fromJson($data['federalState'])
          );
     }
 }
