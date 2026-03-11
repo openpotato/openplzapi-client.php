@@ -1,25 +1,33 @@
 {
   "name": "openpotato/openplzapi-client",
   "description": "A client library for the OpenPLZ API project",
-  "version": "0.1.4",
   "type": "library",
-  "require": {
-    "php": ">=8.3",
-    "guzzlehttp/guzzle": "^7.9"
-  },
-  "autoload": {
-    "classmap": [
-      "src/"
-    ]
-  },
+  "homepage": "https://github.com/openpotato/openplzapi-client",
   "license": "MIT",
   "authors": [
     {
       "name": "STÜBER SYSTEMS GmbH",
-      "email": "openource@stueber.de"
+      "email": "opensource@stueber.de"
     }
   ],
+  "require": {
+    "php": ">=8.3",
+    "guzzlehttp/guzzle": "^7.10"
+  },
   "require-dev": {
-    "phpunit/phpunit": "^12.0"
-  }
+    "phpunit/phpunit": "^12.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "OpenPlzApi\\": "src/"
+    }
+  },
+  "keywords": [
+    "openplzapi",
+    "api-client",
+    "open-data",
+    "gemeindeverzeichnis",
+    "strassenverzeichnis",
+    "postleitzahlverzeichnis"
+  ]
 }
