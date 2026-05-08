@@ -54,7 +54,7 @@ class ReadOnlyList implements \IteratorAggregate, \Countable
     /**
      * Count the number of items in the list.
      *
-     * @return int  NUmber of items
+    * @return int  Number of items
      */
     public function count(): int
     {
@@ -201,10 +201,10 @@ class ReadOnlyPagedList extends ReadOnlyList
      *
      * @param ResponseInterface $response  An HTTP response object
      * @param class-string $modelClass  The class name of items in the list
-     * @param $nextPage  A delegate for getting the next page
+     * @param callable $nextPage  A delegate for getting the next page
      * @return ReadOnlyPagedList  The new instance
      */
-    static function fromJson(ResponseInterface $response, string $modelClass, $nextPage = null): ReadOnlyPagedList
+    static function fromJson(ResponseInterface $response, string $modelClass, callable $nextPage): ReadOnlyPagedList
     {
         $jsonArray = json_decode($response->getBody(), true);
  

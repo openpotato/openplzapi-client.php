@@ -50,7 +50,7 @@ class MunicipalAssociationSummary
     }
 
     /**
-     * Creates a MunicipalAssociationSummary instance from an JSON array.
+     * Creates a MunicipalAssociationSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return MunicipalAssociationSummary  The new instance
@@ -61,9 +61,9 @@ class MunicipalAssociationSummary
             return null;
         }
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['type'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['type'] ?? ''
         );
     }
 }

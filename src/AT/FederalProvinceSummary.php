@@ -40,7 +40,7 @@ class FederalProvinceSummary
     }
 
     /**
-     * Creates a FederalProvinceSummary instance from an JSON array.
+     * Creates a FederalProvinceSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return FederalProvinceSummary  The new instance
@@ -48,8 +48,8 @@ class FederalProvinceSummary
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? ''
         );
     }
 }

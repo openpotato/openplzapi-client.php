@@ -7,7 +7,6 @@
 namespace OpenPlzApi\DE;
 
 use OpenPlzApi\ApiBaseClient;
-use OpenPlzApi\ApiClientException;
 use OpenPlzApi\ReadOnlyList;
 use OpenPlzApi\ReadOnlyPagedList;
 
@@ -75,7 +74,7 @@ class ApiClientForGermany extends ApiBaseClient
     }
 
     /**
-     * Returns government regions (Regierungsbezirke) within a federal state (Bundesaland).
+     * Returns government regions (Regierungsbezirke) within a federal state (Bundesland).
      *
      * @param string $key  Key of the federal state
      * @param int $pageIndex  Page index for paging
@@ -144,7 +143,7 @@ class ApiClientForGermany extends ApiBaseClient
     }
 
     /**
-     * Returns municipal associations (Gemeindeverbünde) within a government region (Regierungsbezirk).
+     * Returns municipal associations (Gemeindeverbände) within a government region (Regierungsbezirk).
      *
      * @param string $key  Key of the government region
      * @param int $pageIndex  Page index for paging
@@ -190,7 +189,7 @@ class ApiClientForGermany extends ApiBaseClient
     }
 
     /**
-     * Returns municipalities (Gemeinden) within a federal state (Bundesland).MunicipalitiesByFederalState
+    * Returns municipalities (Gemeinden) within a federal state (Bundesland).
      *
      * @param string $key  Key of the federal state
      * @param int $pageIndex  Page index for paging
@@ -264,7 +263,7 @@ class ApiClientForGermany extends ApiBaseClient
     }
 
     /**
-     * Returns streets whose name, postal code and/or name matches the given patterns.
+     * Returns streets whose name, postal code and/or locality matches the given patterns.
      *
      * @param string $name  Name pattern
      * @param string $postalCode  Postal code pattern

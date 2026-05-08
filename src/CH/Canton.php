@@ -60,7 +60,7 @@ class Canton
     }
 
     /**
-     * Creates a Canton instance from an JSON array.
+     * Creates a Canton instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Canton  The new instance
@@ -68,10 +68,10 @@ class Canton
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['historicalCode'] ?? null,
-            $data['name'] ?? null,
-            $data['shortName'] ?? null
+            $data['key'] ?? '',
+            $data['historicalCode'] ?? '',
+            $data['name'] ?? '',
+            $data['shortName'] ?? ''
         );
     }
 }

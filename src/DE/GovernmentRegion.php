@@ -19,7 +19,7 @@ class GovernmentRegion
     public string $key;
 
     /**
-     * Name (Bundeslandname)
+     * Name (Regierungsbezirkname)
      * 
      * @var string
      */
@@ -43,7 +43,7 @@ class GovernmentRegion
      * Initializes a new instance of the GovernmentRegion class.
      *
      * @param string $key  Regional key (Regionalschlüssel)
-     * @param string $name  Name (Bundeslandname)
+     * @param string $name  Name (Regierungsbezirksname)
      * @param string $administrativeHeadquarters  Administrative headquarters (Verwaltungssitz des Regierungsbezirks)
      * @param FederalStateSummary $federalState  Federal state (Bundesland)
      */
@@ -60,7 +60,7 @@ class GovernmentRegion
     }
 
     /**
-     * Creates a GovernmentRegion instance from an JSON array.
+     * Creates a GovernmentRegion instance from a JSON array.
      *
      * @param array $data  The data array
      * @return GovernmentRegion  The new instance
@@ -68,10 +68,10 @@ class GovernmentRegion
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['administrativeHeadquarters'] ?? null,
-            FederalStateSummary::fromJson($data['federalState'])
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['administrativeHeadquarters'] ?? '',
+            FederalStateSummary::fromJson($data['federalState'] ?? [])
         );
     }
 }

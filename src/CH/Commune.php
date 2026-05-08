@@ -45,7 +45,7 @@ class Commune
     /**
      * District (Bezirk)
      * 
-     * @var string
+     * @var DistrictSummary
      */
     public DistrictSummary $district;
 
@@ -83,7 +83,7 @@ class Commune
     }
  
     /**
-     * Creates a Commune instance from an JSON array.
+     * Creates a Commune instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Commune  The new instance
@@ -91,10 +91,10 @@ class Commune
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['historicalCode'] ?? null,
-            $data['name'] ?? null,
-            $data['shortName'] ?? null,
+            $data['key'] ?? '',
+            $data['historicalCode'] ?? '',
+            $data['name'] ?? '',
+            $data['shortName'] ?? '',
             DistrictSummary::fromJson($data['district'] ?? []),
             CantonSummary::fromJson($data['canton'] ?? [])
         );

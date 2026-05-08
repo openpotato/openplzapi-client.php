@@ -42,9 +42,9 @@ abstract class ApiBaseClient
     }
  
     /**
-     * Requests an API endpoint and return back a list of elements
+     * Requests an API endpoint and returns a list of elements.
      *
-     * @param string $url  The requests url
+     * @param string $url  The request URL
      * @param string $modelClass  The type of the element to be returned
      * @return ReadOnlyList  The list of elements
      */
@@ -65,11 +65,11 @@ abstract class ApiBaseClient
     }     
 
     /**
-     * Request an API endpoint and return back a page of elements
+     * Requests an API endpoint and returns a page of elements.
      *
-     * @param string $url  The requests url
+     * @param string $url  The request URL
      * @param string $modelClass  The type of the element to be returned
-     * @param string $nextPage  A callable for the getting the next page.
+     * @param callable $nextPage  A callable for getting the next page.
      * @return ReadOnlyPagedList  The page of elements
      */
     protected function getPage(string $url, array $params, string $modelClass, callable $nextPage): ReadOnlyPagedList
@@ -92,30 +92,47 @@ abstract class ApiBaseClient
     }    
 
     /**
-     * Handles an error response by checking whether it is an RFC 7807 problem details object. 
+     * Handles an error response by checking whether it is an RFC 9457 problem details object.
      * If so, a ProblemDetailsException exception is thrown.
      *
      * @param ?ResponseInterface $response  The HTTP response object
      */
     private function handleResponse(?ResponseInterface $response): void
     {
-        if (!is_null($response) && $response->getStatusCode() != 200) {
+        if (!is_null($response)) {
             $contentType = $response->getHeaderLine('Content-Type');
+            
+            // Try to decode structured RFC 9457 response
             if (strpos($contentType, 'application/problem+json') !== false) {
                 
-                $problemDetails = json_decode($response->getBody(), true);
+                // Attempt to decode the response body as JSON
+                try {
+                    $problemDetails = json_decode((string)$response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+                } catch (\JsonException) {
+                    return;
+                }
 
+                // Validate required properties and types according to RFC 9457
+                if (!is_array($problemDetails)
+                    || !isset($problemDetails['type'], $problemDetails['title'], $problemDetails['status'])
+                    || !is_string($problemDetails['type'])
+                    || !is_string($problemDetails['title'])
+                    || !is_int($problemDetails['status'])
+                ) {
+                    return;
+                }
+
+                // Throw a ProblemDetailsException with the decoded details
                 throw new ProblemDetailsException(
                     $problemDetails['type'],
                     $problemDetails['title'],
-                    (int)$problemDetails['status'],
+                    $problemDetails['status'],
                     $problemDetails['detail'] ?? null,
                     $problemDetails['instance'] ?? null,
                     $problemDetails['traceId'] ?? null,
-                    array_diff_key($problemDetails['errors'] ?? [])
+                    is_array($problemDetails['errors'] ?? null) ? $problemDetails['errors'] : []
                 );
             }
         }
     }
 }
- 

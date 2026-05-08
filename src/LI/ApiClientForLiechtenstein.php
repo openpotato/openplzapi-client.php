@@ -7,7 +7,6 @@
 namespace OpenPlzApi\LI;
 
 use OpenPlzApi\ApiBaseClient;
-use OpenPlzApi\ApiClientException;
 use OpenPlzApi\ReadOnlyList;
 use OpenPlzApi\ReadOnlyPagedList;
 
@@ -57,7 +56,7 @@ class ApiClientForLiechtenstein extends ApiBaseClient
     }
 
     /**
-     * Returns streets whose name, postal code and/or name matches the given patterns.
+     * Returns streets whose name, postal code and/or locality matches the given patterns.
      *
      * @param string $name  Name pattern
      * @param string $postalCode  Postal code pattern

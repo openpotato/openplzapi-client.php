@@ -87,7 +87,7 @@ class MunicipalAssociation
     }
 
     /**
-     * Creates a MunicipalAssociation instance from an JSON array.
+     * Creates a MunicipalAssociation instance from a JSON array.
      *
      * @param array $data  The data array
      * @return MunicipalAssociation  The new instance
@@ -95,12 +95,12 @@ class MunicipalAssociation
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['type'] ?? null,
-            $data['administrativeHeadquarters'] ?? null,
-            DistrictSummary::fromJson($data['district']),
-            FederalStateSummary::fromJson($data['federalState'])
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['type'] ?? '',
+            $data['administrativeHeadquarters'] ?? '',
+            DistrictSummary::fromJson($data['district'] ?? []),
+            FederalStateSummary::fromJson($data['federalState'] ?? [])
         );
     }
 }

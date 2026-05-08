@@ -50,7 +50,7 @@ class DistrictSummary
     }
  
     /**
-     * Creates a DistrictSummary instance from an JSON array.
+     * Creates a DistrictSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return DistrictSummary  The new instance
@@ -61,9 +61,9 @@ class DistrictSummary
             return null;
         }
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['code'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['code'] ?? ''
         );
     }
  }

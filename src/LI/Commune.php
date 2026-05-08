@@ -50,7 +50,7 @@ class Commune
     }
  
     /**
-     * Creates a Commune instance from an JSON array.
+     * Creates a Commune instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Commune  The new instance
@@ -58,9 +58,9 @@ class Commune
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['electoralDistrict'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['electoralDistrict'] ?? ''
         );
     }
 }

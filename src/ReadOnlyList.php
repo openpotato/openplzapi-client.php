@@ -54,7 +54,7 @@ class ReadOnlyList implements \IteratorAggregate, \Countable
     /**
      * Count the number of items in the list.
      *
-     * @return int  NUmber of items
+    * @return int  Number of items
      */
     public function count(): int
     {

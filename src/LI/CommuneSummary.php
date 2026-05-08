@@ -40,7 +40,7 @@ class CommuneSummary
     }
  
     /**
-     * Creates a CommuneSummary instance from an JSON array.
+     * Creates a CommuneSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return CommuneSummary  The new instance
@@ -48,8 +48,8 @@ class CommuneSummary
     public static function fromJson(?array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
+            $data['key'] ?? '',
+            $data['name'] ?? '',
         );
     }
 }

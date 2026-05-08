@@ -42,14 +42,14 @@ class Street
     /**
      * Municipality (Gemeinde)
      * 
-     * @var string
+     * @var MunicipalitySummary
      */
     public MunicipalitySummary $municipality;
  
     /**
      * District (Bezirk)
      * 
-     * @var string
+     * @var DistrictSummary
      */
     public DistrictSummary $district;
 
@@ -90,7 +90,7 @@ class Street
     }
  
     /**
-     * Creates a Street instance from an JSON array.
+     * Creates a Street instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Street  The new instance
@@ -98,13 +98,13 @@ class Street
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['postalCode'] ?? null,
-            $data['locality'] ?? null,
-            MunicipalitySummary::fromJson($data['municipality']),
-            DistrictSummary::fromJson($data['district']),
-            FederalProvinceSummary::fromJson($data['federalProvince'])
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['postalCode'] ?? '',
+            $data['locality'] ?? '',
+            MunicipalitySummary::fromJson($data['municipality'] ?? []),
+            DistrictSummary::fromJson($data['district'] ?? []),
+            FederalProvinceSummary::fromJson($data['federalProvince'] ?? [])
          );
     }
 }

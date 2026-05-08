@@ -50,7 +50,7 @@ class CommuneSummary
     }
  
     /**
-     * Creates a CommuneSummary instance from an JSON array.
+     * Creates a CommuneSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return CommuneSummary  The new instance
@@ -61,9 +61,9 @@ class CommuneSummary
             return null;
         }
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['shortName'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['shortName'] ?? ''
         );
     }
 }

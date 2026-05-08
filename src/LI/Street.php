@@ -79,7 +79,7 @@ class Street
     }
  
     /**
-     * Creates a Street instance from an JSON array.
+     * Creates a Street instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Street  The new instance
@@ -87,11 +87,11 @@ class Street
     public static function fromJson(array $data)
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['postalCode'] ?? null,
-            $data['locality'] ?? null,
-            $data['status'] ?? null,
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['postalCode'] ?? '',
+            $data['locality'] ?? '',
+            $data['status'] ?? '',
             CommuneSummary::fromJson($data['commune'] ?? []),
          );
     }

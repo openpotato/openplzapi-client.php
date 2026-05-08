@@ -2,12 +2,13 @@
   "name": "openpotato/openplzapi-client",
   "description": "A client library for the OpenPLZ API project",
   "type": "library",
-  "homepage": "https://github.com/openpotato/openplzapi-client",
+  "homepage": "https://github.com/openpotato/openplzapi-client.php",
   "license": "MIT",
   "authors": [
     {
       "name": "STÜBER SYSTEMS GmbH",
-      "email": "opensource@stueber.de"
+      "email": "opensource@stueber.de",
+      "homepage": "https://github.com/openpotato"
     }
   ],
   "require": {

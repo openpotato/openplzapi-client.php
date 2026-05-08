@@ -7,12 +7,11 @@
 namespace OpenPlzApi\AT;
 
 use OpenPlzApi\ApiBaseClient;
-use OpenPlzApi\ApiClientException;
 use OpenPlzApi\ReadOnlyList;
 use OpenPlzApi\ReadOnlyPagedList;
 
 /**
- * Client for the Autrian API endpoint of the OpenPLZ API
+ * Client for the Austrian API endpoint of the OpenPLZ API
  */
 class ApiClientForAustria extends ApiBaseClient
 {
@@ -126,7 +125,7 @@ class ApiClientForAustria extends ApiBaseClient
     }
 
     /**
-     * Returns streets whose name, postal code and/or name matches the given patterns.
+     * Returns streets whose name, postal code and/or locality matches the given patterns.
      *
      * @param string $name  Name pattern
      * @param string $postalCode  Postal code pattern

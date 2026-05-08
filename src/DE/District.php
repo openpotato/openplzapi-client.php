@@ -63,7 +63,7 @@ class District
      * @param string $type  Type (Kennzeichen)
      * @param string $administrativeHeadquarters  Administrative headquarters (Sitz der Kreisverwaltung)
      * @param GovernmentRegionSummary $governmentRegion  Government region (Regierungsbezirk)
-     * @param FederalProvinceSummary $federalState  Federal state (Bundesland)
+     * @param FederalStateSummary $federalState  Federal state (Bundesland)
      */
     public function __construct(
        string $key, 
@@ -82,7 +82,7 @@ class District
     }
  
     /**
-     * Creates a district instance from an JSON array.
+     * Creates a district instance from a JSON array.
      *
      * @param array $data  The data array
      * @return District  The new instance
@@ -90,12 +90,12 @@ class District
     public static function fromJson(array $data)
     {
         return new self(
-            $data['key'],
-            $data['name'],
-            $data['type'],
-            $data['administrativeHeadquarters'] ?? null,
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['type'] ?? '',
+            $data['administrativeHeadquarters'] ?? '',
             GovernmentRegionSummary::fromJson($data['governmentRegion'] ?? null),
-            FederalStateSummary::fromJson($data['federalState'])
+            FederalStateSummary::fromJson($data['federalState'] ?? [])
         );
     }
 }

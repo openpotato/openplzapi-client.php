@@ -35,14 +35,14 @@ class Locality
     /**
      * Municipality (Gemeinde)
      * 
-     * @var string
+     * @var MunicipalitySummary
      */
     public MunicipalitySummary $municipality;
  
     /**
      * District (Bezirk)
      * 
-     * @var string
+     * @var DistrictSummary
      */
     public DistrictSummary $district;
 
@@ -80,7 +80,7 @@ class Locality
     }
  
     /**
-     * Creates a Locality instance from an JSON array.
+     * Creates a Locality instance from a JSON array.
      *
      * @param array $data  The data array
      * @return Locality  The new instance
@@ -88,9 +88,9 @@ class Locality
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['postalCode'] ?? null,
-            $data['name'] ?? null,
+            $data['key'] ?? '',
+            $data['postalCode'] ?? '',
+            $data['name'] ?? '',
             MunicipalitySummary::fromJson($data['municipality'] ?? []),
             DistrictSummary::fromJson($data['district'] ?? []),
             FederalProvinceSummary::fromJson($data['federalProvince'] ?? [])

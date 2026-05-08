@@ -7,7 +7,6 @@
 namespace OpenPlzApi\CH;
 
 use OpenPlzApi\ApiBaseClient;
-use OpenPlzApi\ApiClientException;
 use OpenPlzApi\ReadOnlyList;
 use OpenPlzApi\ReadOnlyPagedList;
 
@@ -31,7 +30,7 @@ class ApiClientForSwitzerland extends ApiBaseClient
     /**
      * Returns communes (Gemeinden) within a canton (Kanton).
      *
-     * @param string $key  Key of the caton
+     * @param string $key  Key of the canton
      * @param int $pageIndex  Page index for paging
      * @param int $pageSize  Page size for paging
      * @return ReadOnlyPagedList A paged list of {@see OpenPlzApi\CH\Commune} instances
@@ -126,7 +125,7 @@ class ApiClientForSwitzerland extends ApiBaseClient
     }
 
     /**
-     * Returns streets whose name, postal code and/or name matches the given patterns.
+     * Returns streets whose name, postal code and/or locality matches the given patterns.
      *
      * @param string $name  Name pattern
      * @param string $postalCode  Postal code pattern

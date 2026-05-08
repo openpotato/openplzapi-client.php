@@ -60,7 +60,7 @@ class MunicipalitySummary
     }
  
     /**
-     * Creates a MunicipalitySummary instance from an JSON array.
+     * Creates a MunicipalitySummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return MunicipalitySummary  The new instance
@@ -71,10 +71,10 @@ class MunicipalitySummary
             return null;
         }
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['code'] ?? null,
-            $data['status'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['code'] ?? '',
+            $data['status'] ?? ''
         );
     }
 }

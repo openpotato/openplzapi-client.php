@@ -32,19 +32,15 @@ class ApiClientFactory
       */
      public function createClient($clientClass): ApiBaseClient
      {
-         if (class_exists($clientClass)) {
+         if (!class_exists($clientClass)) {
+             throw new \InvalidArgumentException("Class $clientClass does not exist.");
+         }
 
-            $client = new $clientClass($this->baseUrl);
-            
-            if (!$client instanceof ApiBaseClient) {
-                throw new \InvalidArgumentException("Class $clientClass must extend ApiBaseClient.");
-            }
-    
-            return $client;
-        }
-        else{
-            throw new \InvalidArgumentException("Class $clientClass does not exist.");            
-        }
+         if (!is_subclass_of($clientClass, ApiBaseClient::class)) {
+             throw new \InvalidArgumentException("Class $clientClass must extend ApiBaseClient.");
+         }
+
+         return new $clientClass($this->baseUrl);
      }
  }
  

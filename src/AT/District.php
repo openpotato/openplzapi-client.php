@@ -62,7 +62,7 @@ class District
     }
  
     /**
-     * Creates a District instance from an JSON array.
+     * Creates a District instance from a JSON array.
      *
      * @param array $data  The data array
      * @return District  The new instance
@@ -70,9 +70,9 @@ class District
     public static function fromJson(array $data): self
     {
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null,
-            $data['code'] ?? null,
+            $data['key'] ?? '',
+            $data['name'] ?? '',
+            $data['code'] ?? '',
             FederalProvinceSummary::fromJson($data['federalProvince'] ?? [])
         );
     }

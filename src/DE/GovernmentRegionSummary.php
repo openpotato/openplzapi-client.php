@@ -19,7 +19,7 @@ class GovernmentRegionSummary
     public $key;
 
     /**
-     * Name (Bundeslandname)
+     * Name (Regierungsbezirkname)
      * 
      * @var string
      */
@@ -29,7 +29,7 @@ class GovernmentRegionSummary
      * Initializes a new instance of the GovernmentRegionSummary class.
      *
      * @param string $key  Regional key (Regionalschlüssel)
-     * @param string $name  Name (Bundeslandname)
+    * @param string $name  Name (Regierungsbezirkname)
      */
     public function __construct(
         string $key, 
@@ -40,7 +40,7 @@ class GovernmentRegionSummary
     }
 
     /**
-     * Creates a GovernmentRegionSummary instance from an JSON array.
+     * Creates a GovernmentRegionSummary instance from a JSON array.
      *
      * @param array $data  The data array
      * @return GovernmentRegionSummary  The new instance
@@ -51,8 +51,8 @@ class GovernmentRegionSummary
             return null;
         }
         return new self(
-            $data['key'] ?? null,
-            $data['name'] ?? null
+            $data['key'] ?? '',
+            $data['name'] ?? ''
         );
     }
 }
